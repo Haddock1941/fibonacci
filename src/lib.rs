@@ -14,21 +14,17 @@ pub fn fib(n: usize, cache: &mut HashMap<usize, usize>) -> usize {
     // understood what memoization even is, here you go:
     match cache.get(&n) {
         Some(cached_res) => *cached_res,
-        None => {
-            match n {
-                0 => 0,
-                1 => 1,
-                n => {
-                    let res = fib(n - 1, cache) + fib(n - 2, cache);
-                    cache.insert(n, res);
-                    res
-                },
+        None => match n {
+            0 => 0,
+            1 => 1,
+            n => {
+                let res = fib(n - 1, cache) + fib(n - 2, cache);
+                cache.insert(n, res);
+                res
             }
-        }
+        },
     }
-
 }
-
 
 #[cfg(test)]
 mod tests {
