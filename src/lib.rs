@@ -41,4 +41,13 @@ mod tests {
     fn test_fib_31() {
         assert_eq!(fib(31, &mut HashMap::new()), 1346269);
     }
+
+    #[test]
+    fn test_memoization() {
+        let mut false_cache = HashMap::from([
+            (2, 2)
+        ]);
+        assert_eq!(fib(2, &mut HashMap::new()), 1);
+        assert_eq!(fib(2, &mut false_cache), 2);
+    }
 }
